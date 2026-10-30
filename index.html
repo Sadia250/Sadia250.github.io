@@ -1,0 +1,359 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Sadia Akter Portfolio</title>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,500;12..96,700&family=Figtree:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap">
+<style>
+/* Layout: left-aligned single column, wide hero name, content in a 1040px measure; sections separated by a labelled rule */
+:root {
+  --bg: #F4F7F8;
+  --surface: #FFFFFF;
+  --fg: #0E1B24;
+  --muted: #51636E;
+  --line: #D5DEE3;
+  --accent: #0B7A75;
+  --accent-ink: #FFFFFF;
+  --accent-soft: #DDF1EF;
+  --ok: #17693A;
+  --ok-soft: #DDF3E4;
+  --bad: #9B2C2C;
+  --bad-soft: #F8E1E1;
+  --font-display: "Bricolage Grotesque", "Segoe UI", system-ui, sans-serif;
+  --font-body: "Figtree", "Segoe UI", system-ui, sans-serif;
+  --font-mono: "JetBrains Mono", ui-monospace, Consolas, monospace;
+}
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) {
+    --bg: #0C161C;
+    --surface: #132029;
+    --fg: #E8F0F3;
+    --muted: #93A7B2;
+    --line: #263842;
+    --accent: #4FD1C5;
+    --accent-ink: #062B28;
+    --accent-soft: #123A3A;
+    --ok: #7EDCA0;
+    --ok-soft: #153A25;
+    --bad: #F2A0A0;
+    --bad-soft: #432121;
+    color-scheme: dark;
+  }
+}
+:root[data-theme="dark"] {
+  --bg: #0C161C;
+  --surface: #132029;
+  --fg: #E8F0F3;
+  --muted: #93A7B2;
+  --line: #263842;
+  --accent: #4FD1C5;
+  --accent-ink: #062B28;
+  --accent-soft: #123A3A;
+  --ok: #7EDCA0;
+  --ok-soft: #153A25;
+  --bad: #F2A0A0;
+  --bad-soft: #432121;
+  color-scheme: dark;
+}
+
+* { box-sizing: border-box; }
+body { margin: 0; }
+body {
+  background: var(--bg);
+  color: var(--fg);
+  font-family: var(--font-body);
+  font-size: 16px;
+  line-height: 1.6;
+  padding-left: max(16px, env(safe-area-inset-left, 0px));
+  padding-right: max(16px, env(safe-area-inset-right, 0px));
+  padding-block: 0 56px;
+}
+.wrap { max-width: 1040px; margin: 0 auto; }
+a { color: var(--accent); text-underline-offset: 3px; }
+a:focus-visible, button:focus-visible { outline: 3px solid var(--accent); outline-offset: 3px; border-radius: 4px; }
+
+/* top bar */
+.bar { display: flex; flex-wrap: wrap; gap: 8px 28px; justify-content: space-between; align-items: center; padding-block: 22px; }
+.bar .mark { font-family: var(--font-mono); font-size: 13px; letter-spacing: 0.04em; color: var(--muted); }
+.bar nav { display: flex; flex-wrap: wrap; gap: 6px 22px; }
+.bar nav a { color: var(--fg); text-decoration: none; font-size: 15px; font-weight: 500; }
+.bar nav a:hover { color: var(--accent); }
+
+/* hero */
+.hero { padding-block: 56px 72px; display: grid; gap: 28px; }
+.eyebrow { font-family: var(--font-mono); font-size: 13px; letter-spacing: 0.08em; text-transform: uppercase; color: var(--accent); }
+h1 {
+  font-family: var(--font-display);
+  font-weight: 700;
+  font-size: clamp(3rem, 11vw, 7.25rem);
+  line-height: 0.95;
+  letter-spacing: -0.03em;
+  margin: 0;
+  text-wrap: balance;
+}
+.hero p.lede { max-width: 62ch; font-size: 1.15rem; color: var(--muted); margin: 0; }
+.hero p.lede strong { color: var(--fg); font-weight: 600; }
+.actions { display: flex; flex-wrap: wrap; gap: 12px; align-items: center; }
+.btn {
+  display: inline-flex; align-items: center; gap: 10px;
+  font: 600 15px var(--font-body);
+  padding: 12px 18px; border-radius: 8px; border: 1px solid var(--accent);
+  background: var(--accent); color: var(--accent-ink); cursor: pointer; text-decoration: none;
+}
+.btn.ghost { background: transparent; color: var(--accent); }
+.btn:hover { filter: brightness(1.06); }
+.email { font-family: var(--font-mono); font-size: 14px; color: var(--fg); user-select: all; overflow-wrap: anywhere; }
+.status { font-size: 14px; color: var(--muted); min-height: 1.4em; }
+
+/* sections */
+section { padding-block: 56px 8px; }
+.head { display: flex; align-items: baseline; gap: 16px; margin-bottom: 28px; }
+.head h2 { font-family: var(--font-display); font-weight: 700; font-size: clamp(1.6rem, 4vw, 2.2rem); letter-spacing: -0.02em; margin: 0; white-space: nowrap; }
+.head .rule { flex: 1; border-top: 1px solid var(--line); min-width: 24px; }
+.head .tag { font-family: var(--font-mono); font-size: 12px; letter-spacing: 0.06em; text-transform: uppercase; color: var(--muted); white-space: nowrap; }
+@media (max-width: 560px) { .head .tag { display: none; } }
+
+/* skills */
+.skills { display: grid; grid-template-columns: repeat(auto-fit, minmax(230px, 1fr)); gap: 28px 36px; }
+.skills h3 { font-family: var(--font-mono); font-size: 12px; letter-spacing: 0.08em; text-transform: uppercase; color: var(--muted); margin: 0 0 12px; font-weight: 500; }
+.chips { display: flex; flex-wrap: wrap; gap: 8px; margin: 0; padding: 0; list-style: none; }
+.chips li { font-size: 14px; padding: 5px 11px; border: 1px solid var(--line); background: var(--surface); border-radius: 6px; }
+.chips li.soft { color: var(--muted); border-style: dashed; }
+
+/* experience */
+.job { display: grid; grid-template-columns: minmax(0, 220px) minmax(0, 1fr); gap: 16px 40px; }
+@media (max-width: 720px) { .job { grid-template-columns: minmax(0, 1fr); } }
+.job .when { font-family: var(--font-mono); font-size: 13px; color: var(--muted); }
+.job h3 { font-family: var(--font-display); font-size: 1.4rem; margin: 0 0 2px; letter-spacing: -0.01em; }
+.job .co { color: var(--accent); font-weight: 600; margin: 0 0 14px; }
+.job ul { margin: 0; padding-left: 1.1rem; display: grid; gap: 8px; max-width: 70ch; }
+
+/* projects */
+.projects { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 20px; }
+.proj { background: var(--surface); border: 1px solid var(--line); border-radius: 12px; padding: 24px; display: flex; flex-direction: column; gap: 14px; min-width: 0; }
+.proj h3 { font-family: var(--font-display); font-size: 1.35rem; margin: 0; letter-spacing: -0.01em; }
+.proj .kind { font-family: var(--font-mono); font-size: 12px; color: var(--muted); letter-spacing: 0.04em; }
+.proj p { margin: 0; color: var(--muted); }
+.proj ul { margin: 0; padding-left: 1.1rem; display: grid; gap: 6px; }
+.stack { display: flex; flex-wrap: wrap; gap: 6px; margin-top: auto; padding-top: 4px; }
+.stack span { font-family: var(--font-mono); font-size: 12px; padding: 3px 8px; border-radius: 4px; background: var(--accent-soft); color: var(--accent); }
+.proj a.src { font-weight: 600; font-size: 15px; }
+
+/* qa table */
+.intro { max-width: 66ch; color: var(--muted); margin: 0 0 24px; }
+.tablewrap { overflow-x: auto; border: 1px solid var(--line); border-radius: 12px; background: var(--surface); }
+table { border-collapse: collapse; width: 100%; min-width: 680px; font-size: 15px; }
+th, td { text-align: left; padding: 14px 18px; border-bottom: 1px solid var(--line); vertical-align: top; }
+th { font-family: var(--font-mono); font-size: 12px; font-weight: 500; letter-spacing: 0.06em; text-transform: uppercase; color: var(--muted); }
+tbody tr:last-child td { border-bottom: 0; }
+td.case { font-weight: 600; white-space: nowrap; }
+.pill { display: inline-block; font-family: var(--font-mono); font-size: 12px; padding: 2px 9px; border-radius: 999px; white-space: nowrap; }
+.pill.ok { background: var(--ok-soft); color: var(--ok); }
+.pill.bad { background: var(--bad-soft); color: var(--bad); }
+
+/* education */
+.two { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 36px; }
+.two h3 { font-family: var(--font-mono); font-size: 12px; letter-spacing: 0.08em; text-transform: uppercase; color: var(--muted); font-weight: 500; margin: 0 0 14px; }
+.list { display: grid; gap: 16px; margin: 0; padding: 0; list-style: none; }
+.list b { display: block; font-weight: 600; }
+.list span { color: var(--muted); font-size: 15px; }
+
+/* contact */
+.contact { background: var(--surface); border: 1px solid var(--line); border-radius: 12px; padding: 32px; display: grid; gap: 16px; }
+.contact h2 { font-family: var(--font-display); font-size: clamp(1.6rem, 4vw, 2.2rem); margin: 0; letter-spacing: -0.02em; }
+.contact p { margin: 0; color: var(--muted); max-width: 58ch; }
+.reach { display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 16px 28px; margin: 8px 0 0; padding-top: 20px; border-top: 1px solid var(--line); }
+.reach div { min-width: 0; }
+.reach dt { font-family: var(--font-mono); font-size: 12px; letter-spacing: 0.08em; text-transform: uppercase; color: var(--muted); margin-bottom: 4px; }
+.reach dd { margin: 0; overflow-wrap: anywhere; }
+footer { margin-top: 40px; font-size: 13px; color: var(--muted); font-family: var(--font-mono); }
+
+@media (prefers-reduced-motion: reduce) { * { transition: none !important; animation: none !important; } }
+</style>
+</head>
+<body>
+<div class="wrap">
+  <header class="bar">
+    <span class="mark">sadia.akter / portfolio</span>
+    <nav aria-label="Sections">
+      <a href="#skills">Skills</a>
+      <a href="#experience">Experience</a>
+      <a href="#projects">Projects</a>
+      <a href="#testing">Testing</a>
+      <a href="#education">Education</a>
+      <a href="#reach-me">Contact</a>
+    </nav>
+  </header>
+
+  <main>
+    <div class="hero">
+      <div class="eyebrow">B.Sc. CSE, Independent University, Bangladesh &middot; Dhaka</div>
+      <h1>Sadia Akter</h1>
+      <p class="lede">I build web applications with <strong>Laravel, PHP and MySQL</strong>, and I am trained in <strong>manual and automation software testing</strong>. I like finding what breaks before a user does, and I explain problems clearly to the people who need to fix them.</p>
+      <div class="actions">
+        <button class="btn" id="copy" type="button">Copy email address</button>
+        <a class="btn ghost" href="https://github.com/Sadia250" target="_blank" rel="noopener">GitHub profile</a>
+        <a class="btn ghost" href="https://www.linkedin.com/in/sadia-akter-419a2221a/" target="_blank" rel="noopener">LinkedIn profile</a>
+        <span class="email" id="email">nusratsadia281@gmail.com</span>
+      </div>
+      <div class="status" id="status" role="status" aria-live="polite"></div>
+    </div>
+
+    <section id="skills">
+      <div class="head"><h2>Skills</h2><span class="rule"></span><span class="tag">What I work with</span></div>
+      <div class="skills">
+        <div>
+          <h3>Web development</h3>
+          <ul class="chips"><li>PHP</li><li>Laravel</li><li>WordPress</li><li>HTML</li><li>CSS</li><li>JavaScript</li></ul>
+        </div>
+        <div>
+          <h3>Data and tools</h3>
+          <ul class="chips"><li>MySQL</li><li>Git</li><li>GitHub</li><li>NetBeans</li><li>Code Blocks</li></ul>
+        </div>
+        <div>
+          <h3>Testing</h3>
+          <ul class="chips"><li>Manual testing</li><li>Test cases</li><li>Bug reporting</li><li>Automation fundamentals</li></ul>
+        </div>
+        <div>
+          <h3>Languages</h3>
+          <ul class="chips"><li>Java</li><li>JavaScript</li><li class="soft">Python (basic)</li><li>Bangla (native)</li><li>English (fluent)</li></ul>
+        </div>
+      </div>
+    </section>
+
+    <section id="experience">
+      <div class="head"><h2>Experience</h2><span class="rule"></span><span class="tag">Feb 2025 &ndash; Oct 2025</span></div>
+      <div class="job">
+        <div class="when">Feb 2025 &ndash; Oct 2025</div>
+        <div>
+          <h3>Web Developer</h3>
+          <p class="co">D. Huda Tech UK Limited</p>
+          <ul>
+            <li>Built and maintained web features with Laravel, PHP and WordPress in a professional team.</li>
+            <li>Troubleshot and fixed bugs across front-end and back-end components, which improved application stability.</li>
+            <li>Managed MySQL databases for application data, including queries and schema-level adjustments.</li>
+            <li>Took part in projects from requirements through deployment, working with the development team.</li>
+            <li>Reported issues and clarified requirements with teammates so development and testing stayed in step.</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <section id="projects">
+      <div class="head"><h2>Projects</h2><span class="rule"></span><span class="tag">Source on GitHub</span></div>
+      <div class="projects">
+        <article class="proj">
+          <div class="kind">Full-stack web system</div>
+          <h3>Hospital Management System</h3>
+          <p>A system for running day-to-day hospital operations.</p>
+          <ul>
+            <li>Patient and doctor records, appointments and authentication.</li>
+            <li>Admin modules for managing data and streamlining administrative work.</li>
+          </ul>
+          <div class="stack"><span>Laravel</span><span>PHP</span><span>MySQL</span><span>HTML</span><span>CSS</span><span>JavaScript</span></div>
+          <a class="src" href="https://github.com/Sadia250/Hospital-Management-System" target="_blank" rel="noopener">View source on GitHub</a>
+        </article>
+        <article class="proj">
+          <div class="kind">Team project, 2 members</div>
+          <h3>Water E-Commerce Website</h3>
+          <p>An online store built together with a teammate.</p>
+          <ul>
+            <li>Product listing, cart and checkout.</li>
+            <li>Signup and login, with PHP logic and MySQL managing accounts and product data.</li>
+          </ul>
+          <div class="stack"><span>PHP</span><span>MySQL</span><span>HTML</span><span>CSS</span><span>JavaScript</span></div>
+          <a class="src" href="https://github.com/TateG63/Waterecommerce" target="_blank" rel="noopener">View source on GitHub</a>
+        </article>
+      </div>
+    </section>
+
+    <section id="testing">
+      <div class="head"><h2>How I test a login page</h2><span class="rule"></span><span class="tag">Test scenarios</span></div>
+      <p class="intro">After SQA training in manual and automation testing, this is the checklist I start with for a login form. Each row is one scenario, with the input I try and what I expect to see.</p>
+      <div class="tablewrap">
+        <table>
+          <thead><tr><th>Scenario</th><th>Input</th><th>Expected result</th><th>Outcome</th></tr></thead>
+          <tbody>
+            <tr><td class="case">Valid login</td><td>Registered email and correct password</td><td>User signs in and lands on the right page</td><td><span class="pill ok">Accepted</span></td></tr>
+            <tr><td class="case">Wrong password</td><td>Registered email, incorrect password</td><td>Clear error message, no sign-in</td><td><span class="pill bad">Rejected</span></td></tr>
+            <tr><td class="case">Unknown user</td><td>Email that is not registered</td><td>Error message, no account details revealed</td><td><span class="pill bad">Rejected</span></td></tr>
+            <tr><td class="case">Empty fields</td><td>Both fields blank, then one blank</td><td>Validation message on the missing field</td><td><span class="pill bad">Rejected</span></td></tr>
+            <tr><td class="case">Boundaries</td><td>Shortest and longest length, spaces, special characters, bad email format</td><td>Handled without errors or a crash</td><td><span class="pill bad">Rejected</span></td></tr>
+            <tr><td class="case">Injection</td><td>SQL injection text in each field</td><td>Input rejected, no data exposed</td><td><span class="pill bad">Rejected</span></td></tr>
+            <tr><td class="case">Repeated failures</td><td>Several wrong attempts in a row</td><td>Lockout or delay after the limit</td><td><span class="pill bad">Rejected</span></td></tr>
+            <tr><td class="case">Session end</td><td>Log out, then press the browser Back button</td><td>Protected pages stay hidden</td><td><span class="pill ok">Accepted</span></td></tr>
+          </tbody>
+        </table>
+      </div>
+    </section>
+
+    <section id="education">
+      <div class="head"><h2>Education and activities</h2><span class="rule"></span><span class="tag">IUB</span></div>
+      <div class="two">
+        <div>
+          <h3>Education</h3>
+          <ul class="list">
+            <li><b>B.Sc. Computer Science and Engineering</b><span>Independent University, Bangladesh &middot; 2020 &ndash; 2025</span></li>
+            <li><b>Higher Secondary Certificate</b><span>Kurmitola High School and College &middot; 2019</span></li>
+            <li><b>Secondary School Certificate</b><span>Kurmitola High School and College &middot; 2017</span></li>
+          </ul>
+        </div>
+        <div>
+          <h3>Certifications and activities</h3>
+          <ul class="list">
+            <li><b>SQA: Manual and Automation Testing</b><span>Ostad</span></li>
+            <li><b>CCNA: Introduction to Networking (ITN)</b><span>Networking fundamentals</span></li>
+            <li><b>First place, IUB Tech Fest (2022)</b><span>Database management project</span></li>
+            <li><b>Monitor, Live-in Field Experience (LFE)</b><span>Also volunteer at Tech-Fest and member of JUKTI, the IUB Programming Society</span></li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <section id="reach-me">
+      <div class="contact">
+        <h2>Let's talk</h2>
+        <p>I am looking for an entry-level role where I can test software, build web features, or work with clients. The quickest way to reach me is email.</p>
+        <div class="actions">
+          <button class="btn" id="copy2" type="button">Copy email address</button>
+          <span class="email">nusratsadia281@gmail.com</span>
+        </div>
+        <dl class="reach">
+          <div><dt>Phone</dt><dd class="email">+880 1711-908250</dd></div>
+          <div><dt>LinkedIn</dt><dd><a href="https://www.linkedin.com/in/sadia-akter-419a2221a/" target="_blank" rel="noopener">linkedin.com/in/sadia-akter-419a2221a</a></dd></div>
+          <div><dt>GitHub</dt><dd><a href="https://github.com/Sadia250" target="_blank" rel="noopener">github.com/Sadia250</a></dd></div>
+        </dl>
+      </div>
+    </section>
+  </main>
+
+  <footer>Sadia Akter &middot; Dhaka, Bangladesh</footer>
+</div>
+
+<script>
+(function () {
+  var email = "nusratsadia281@gmail.com";
+  var status = document.getElementById("status");
+  function done(ok) {
+    status.textContent = ok ? "Email address copied." : "Copy did not work here. The address is selected, press Ctrl+C or Cmd+C.";
+    if (!ok) {
+      var el = document.getElementById("email");
+      var range = document.createRange();
+      range.selectNodeContents(el);
+      var sel = window.getSelection();
+      sel.removeAllRanges();
+      sel.addRange(range);
+    }
+  }
+  function copy() {
+    try {
+      navigator.clipboard.writeText(email).then(function () { done(true); }, function () { done(false); });
+    } catch (e) { done(false); }
+  }
+  document.getElementById("copy").addEventListener("click", copy);
+  document.getElementById("copy2").addEventListener("click", copy);
+})();
+</script>
+</body>
+</html>
