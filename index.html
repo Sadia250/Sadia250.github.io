@@ -74,7 +74,11 @@ a { color: var(--accent); text-underline-offset: 3px; }
 a:focus-visible, button:focus-visible { outline: 3px solid var(--accent); outline-offset: 3px; border-radius: 4px; }
 
 /* top bar */
-.bar { display: flex; flex-wrap: wrap; gap: 8px 28px; justify-content: space-between; align-items: center; padding-block: 22px; }
+.bar { position: sticky; top: env(safe-area-inset-top, 0px); z-index: 20; background: var(--bg); border-bottom: 1px solid var(--line); display: flex; flex-wrap: wrap; gap: 8px 28px; justify-content: space-between; align-items: center; padding-block: 14px; }
+body::before { content: ""; position: fixed; inset: 0 0 auto; height: env(safe-area-inset-top, 0px); z-index: 30; background: var(--bg); }
+html { scroll-behavior: smooth; }
+section { scroll-margin-top: 80px; }
+@media (prefers-reduced-motion: reduce) { html { scroll-behavior: auto; } }
 .bar .mark { font-family: var(--font-mono); font-size: 13px; letter-spacing: 0.04em; color: var(--muted); }
 .bar nav { display: flex; flex-wrap: wrap; gap: 6px 22px; }
 .bar nav a { color: var(--fg); text-decoration: none; font-size: 15px; font-weight: 500; }
